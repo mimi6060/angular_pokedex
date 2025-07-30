@@ -32,13 +32,13 @@
         <div class="d-flex justify-content-center gap-2 flex-wrap">
           <span 
             class="badge rounded-pill" 
-            [style.background-color]="getTypeColor(moveDetail()!.type.name)"
+            [style.background-color]="getTypeColors(moveDetail()!.type.name)"
             style="color: white;"
           >
             {{ moveDetail()!.type.name | titlecase }}
           </span>
           <span class="badge rounded-pill bg-secondary">
-            {{ getDamageClassIcon(moveDetail()!.damage_class.name) }}
+            {{ moveDetail()!.damage_class.name | statEmoji  }}
             {{ moveDetail()!.damage_class.name | titlecase }}
           </span>
         </div>

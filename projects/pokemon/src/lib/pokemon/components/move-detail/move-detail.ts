@@ -1,19 +1,20 @@
-import { Component, inject, signal, effect } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Location } from '@angular/common';
 import { PokemonService } from '../../services/pokemon';
 import { MoveDetailResponse } from '../../models/pokemon';
+import {getTypeColor} from '../../tools/getTypeColor';
+import { StatEmojiPipe } from '../../pipes/stat-emoji.pipe';
 
 @Component({
   selector: 'lib-move-detail',
   standalone: true,
   templateUrl: './move-detail.html',
   styleUrl: './move-detail.css',
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule, StatEmojiPipe]
 })
 export class MoveDetail {
-  private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   private readonly location = inject(Location);
   private readonly pokemonService = inject(PokemonService);
@@ -31,6 +32,7 @@ export class MoveDetail {
     });
     
   }
+
 
   getEnglishEffect(): string {
     const move = this.moveDetail();
@@ -60,36 +62,8 @@ export class MoveDetail {
     return name.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
   }
 
-  getTypeColor(type: string): string {
-    const typeColors: { [key: string]: string } = {
-      normal: '#A8A878',
-      fighting: '#C03028',
-      flying: '#A890F0',
-      poison: '#A040A0',
-      ground: '#E0C068',
-      rock: '#B8A038',
-      bug: '#A8B820',
-      ghost: '#705898',
-      steel: '#B8B8D0',
-      fire: '#F08030',
-      water: '#6890F0',
-      grass: '#78C850',
-      electric: '#F8D030',
-      psychic: '#F85888',
-      ice: '#98D8D8',
-      dragon: '#7038F8',
-      dark: '#705848',
-      fairy: '#EE99AC'
-    };
-    return typeColors[type] || '#68A090';
+  getTypeColors(type: string): string {
+    return getTypeColor(type);
   }
 
-  getDamageClassIcon(damageClass: string): string {
-    switch (damageClass) {
-      case 'physical': return '⚔️';
-      case 'special': return '✨';
-      case 'status': return '🔄';
-      default: return '❓';
-    }
-  }
 }

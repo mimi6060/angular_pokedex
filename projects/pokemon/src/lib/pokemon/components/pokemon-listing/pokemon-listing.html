@@ -54,7 +54,7 @@
 
 
     <!-- Liste -->
-    <div class="row">
+    <div class="row g-4">
       @for (p of pokemonList().data?.results; track p.name) {
         <div class="col-md-3" (click)="selectPokemon(p.name)">
           <div class="card mb-3">
