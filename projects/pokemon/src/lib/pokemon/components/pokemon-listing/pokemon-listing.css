@@ -1,0 +1,233 @@
+/* Container adjustments */
+.container-fluid {
+  max-width: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .container-fluid {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+
+/* Pokemon card styling */
+.pokemon-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #dee2e6;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  border-color: #007bff;
+}
+
+.pokemon-card:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+.pokemon-card:active {
+  transform: translateY(-2px);
+}
+
+/* Pokemon image styling */
+.card-img-pokemon {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.pokemon-card:hover .card-img-pokemon {
+  transform: scale(1.1);
+}
+
+/* Badge sizing */
+.badge-sm {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Card header adjustments */
+.pokemon-card .card-header {
+  padding: 0.75rem 0.5rem 0.5rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.pokemon-card .card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+/* Card footer adjustments */
+.pokemon-card .card-footer {
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Responsive adjustments - desktop first approach */
+
+/* Extra large screens (1400px+) - 6 cards per row */
+@media (min-width: 1400px) {
+  .pokemon-card {
+    max-width: 200px;
+  }
+  
+  .card-img-pokemon {
+    height: 100px;
+  }
+  
+  .row.g-4 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+  }
+}
+
+/* Large screens (1200px-1399px) - 4 cards per row */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .pokemon-card {
+    max-width: 240px;
+  }
+  
+  .card-img-pokemon {
+    height: 110px;
+  }
+  
+  .row.g-4 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+  }
+}
+
+/* Medium screens (992px-1199px) - 2 cards per row */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .pokemon-card {
+    max-width: 400px;
+  }
+  
+  .card-img-pokemon {
+    height: 130px;
+  }
+  
+  .row.g-4 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+  }
+}
+
+/* Specific for laptops around 1024px - reduce gap further */
+@media (min-width: 992px) and (max-width: 1100px) {
+  .row.g-4 {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
+  }
+  
+  .container-fluid {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+/* Tablets (768px-991px) - 2 cards per row */
+@media (min-width: 768px) and (max-width: 991px) {
+  .pokemon-card {
+    max-width: 320px;
+  }
+  
+  .card-img-pokemon {
+    height: 140px;
+  }
+  
+  .pokemon-card .card-title {
+    font-size: 1.1rem;
+  }
+  
+  .badge-sm {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .pokemon-card .card-header {
+    padding: 1rem 0.75rem 0.75rem;
+  }
+  
+  .pokemon-card .card-footer {
+    padding: 0.75rem;
+  }
+  
+  .row.g-4 {
+    --bs-gutter-x: 3rem;
+    --bs-gutter-y: 2rem;
+  }
+}
+
+/* Small tablets (576px-767px) - 2 cards per row */
+@media (min-width: 576px) and (max-width: 767px) {
+  .pokemon-card {
+    max-width: 200px;
+  }
+  
+  .card-img-pokemon {
+    height: 100px;
+  }
+  
+  .pokemon-card .card-title {
+    font-size: 0.9rem;
+  }
+  
+  .badge-sm {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+/* Mobile phones (max 575px) - 1 card per row */
+@media (max-width: 575px) {
+  .pokemon-card {
+    max-width: none;
+    margin: 0;
+  }
+  
+  .card-img-pokemon {
+    height: 120px;
+  }
+  
+  .pokemon-card .card-title {
+    font-size: 1rem;
+  }
+  
+  .badge-sm {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Loading and error states */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  margin: 2rem auto;
+  display: block;
+}
+
+/* Pagination styling */
+.pagination-container {
+  margin: 2rem 0;
+}
+
+.pagination-container .btn {
+  min-width: 80px;
+}
+
+.pagination-info {
+  font-weight: 500;
+  color: #495057;
+}

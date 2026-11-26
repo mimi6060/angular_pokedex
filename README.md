@@ -1,89 +1,59 @@
+# Pokedex
 
-# 🧪 Angular Challenge – Pokédex App
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
 
-## 📋 Description
+## Development server
 
-Ce projet est un **Pokédex** développé en Angular, dans le cadre d'un challenge technique. Il utilise l'API [PokeAPI](https://pokeapi.co/docs/v2) pour afficher les données des Pokémon.
-
-L’objectif principal est d’évaluer la capacité à structurer une application Angular en respectant de bonnes pratiques tout en offrant une expérience utilisateur fluide.
-
----
-
-## 🎯 Fonctionnalités
-
-### 1. 🧾 Liste des Pokémon
-- Affichage de tous les Pokémon disponibles via la [PokeAPI](https://pokeapi.co/docs/v2).
-- Pagination pour naviguer efficacement dans la liste.
-  - Implémentation d’un système de pagination clair et intuitif.
-  - Plusieurs stratégies de pagination ont été considérées ; la plus adaptée a été retenue pour optimiser l’expérience utilisateur.
-
-### 2. 📄 Page de détails
-- Chaque Pokémon listé est **cliquable**, menant à une **page de détails dédiée**.
-- Les informations affichées incluent :
-  - **Nom** et **ID**
-  - **Sprites** (images)
-  - **Types** (ex. : Fire, Water, Grass)
-  - **Capacités** (_Abilities_)
-  - **Statistiques** (HP, Attaque, Défense, Vitesse, etc.)
-
-### 3. 💻 Responsive
-- L'application est conçue pour être **responsive sur les écrans de bureau**.
-- L'affichage mobile n’est pas requis pour ce challenge.
-
----
-
-## 🚀 Démarrage du projet
-
-### 🔧 Prérequis
-- Node.js
-- npm
-
-### 📦 Installation
+To start a local development server, run:
 
 ```bash
-npm install
+ng serve
 ```
 
-### ▶️ Lancement
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
 ```bash
-npm run start
+ng generate component component-name
 ```
 
-L'application sera accessible sur `http://localhost:4200/`.
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
----
-
-## 🌐 Démo en ligne
-
-Le projet est déployé et accessible à l'adresse suivante :
-
-👉 [https://kaleidoscopic-paprenjak-7552a7.netlify.app/pokemons/80](https://kaleidoscopic-paprenjak-7552a7.netlify.app/pokemons/80)
-
----
-
-## 📁 Structure du projet
-
-```
-src/
-├── app/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── models/
-│   └── app.module.ts
-├── assets/
-└── index.html
+```bash
+ng generate --help
 ```
 
----
+## Building
 
-## 🛠️ Technologies utilisées
+To build the project run:
 
-- Angular
-- TypeScript
-- RxJS
-- HTML/CSS
-- PokeAPI
+```bash
+ng build
+```
 
----
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

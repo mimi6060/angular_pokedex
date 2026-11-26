@@ -55,6 +55,23 @@ export interface PokemonDetailResponse {
     is_hidden: boolean;
     slot: number;
   }>;
+  moves: Array<{
+    move: {
+      name: string;
+      url: string;
+    };
+    version_group_details: Array<{
+      level_learned_at: number;
+      move_learn_method: {
+        name: string;
+        url: string;
+      };
+      version_group: {
+        name: string;
+        url: string;
+      };
+    }>;
+  }>;
 }
 
 // État de chargement
@@ -67,4 +84,27 @@ export interface LoadingState<T> {
 export interface SpriteUrl {
   label: string;
   url: string;
+}
+
+export interface PokemonSpeciesResponse {
+  id: number;
+  name: string;
+  flavor_text_entries: Array<{
+    flavor_text: string;
+    language: {
+      name: string;
+      url: string;
+    };
+    version: {
+      name: string;
+      url: string;
+    };
+  }>;
+  genera: Array<{
+    genus: string;
+    language: {
+      name: string;
+      url: string;
+    };
+  }>;
 }

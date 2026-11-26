@@ -1,10 +1,12 @@
-<div class="container">
+<div class="container-fluid px-3 px-md-4">
   <!-- État de chargement -->
+<div class="d-flex justify-content-center align-items-center min-vh-100">
   @if (pokemonList().loading) {
     <div class="spinner-border" role="status">
       <span class="visually-hidden">Chargement...</span>
     </div>
   }
+</div>
 
   <!-- Erreur -->
   @if (pokemonList().error) {
@@ -16,7 +18,7 @@
   <!-- Chargé -->
   @if (pokemonList().data) {
     <!-- Pagination -->
-    <div class="d-flex align-items-center justify-content-center gap-3 my-4">
+    <div class="d-flex align-items-center justify-content-center gap-3 pagination-container">
       <button
         class="btn btn-sm btn-outline-primary"
         [disabled]="offset === 0"
@@ -24,8 +26,19 @@
         ‹
       </button>
 
-      <span>{{ offset + 1 }} - {{ offset + limit > total ? total : offset + limit }}</span>
-      <span class="text-muted"> / {{ total }}</span>
+      <div class="input-group input-group-sm" style="width: 200px;">
+        <span class="input-group-text">Page</span>
+        <input 
+          type="number" 
+          class="form-control text-center" 
+          [value]="getCurrentPage()"
+          [min]="1" 
+          [max]="getTotalPages()"
+          (keydown.enter)="goToPage($event)"
+          (blur)="goToPage($event)"
+          placeholder="Page">
+        <span class="input-group-text">/ {{ getTotalPages() }}</span>
+      </div>
 
       <button
         class="btn btn-sm btn-outline-primary"
@@ -35,47 +48,73 @@
       </button>
     </div>
 
+    <!-- Pagination info -->
+    <div class="text-center text-muted mb-3">
+      <small>{{ offset + 1 }} - {{ offset + limit > total ? total : offset + limit }} / {{ total }} Pokemon</small>
+    </div>
+
     <!-- Liste -->
-    <div class="row">
+    <div class="row g-4">
       @for (p of pokemonList().data?.results; track p.name) {
-        <div class="col-md-3" (click)="selectPokemon(p.name)">
-          <div class="card mb-3">
-            <div class="card-header">
-              <h5 class="card-title text-center">{{ p.name | titlecase }}</h5>
-              <div class="d-flex align-items-center justify-content-center gap-2">
+        <div class="col-xxl-2 col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+          <div class="card pokemon-card h-100 shadow-sm" (click)="selectPokemon(p.name)" role="button" tabindex="0" 
+               (keydown.enter)="selectPokemon(p.name)" (keydown.space)="selectPokemon(p.name)">
+            <div class="card-header text-center">
+              <h6 class="card-title mb-2">{{ p.name | titlecase }}</h6>
+              <div class="d-flex align-items-center justify-content-center gap-1 flex-wrap">
                 @for (s of getPokemonSummary(p.name).stats?.slice(0,3); track s.stat.name) {
-                  <span class="badge text-bg-dark" [title]="s.stat.name">{{ s.stat.name | statEmoji }} {{ s.base_stat }}</span>
+                  <span class="badge text-bg-dark badge-sm" [title]="s.stat.name">{{ s.stat.name | statEmoji }} {{ s.base_stat }}</span>
                 }
               </div>
             </div>
-            <img class="card-img-top" [src]="getPokemonSummary(p.name).img" [alt]="p.name" />
-            <div class="card-footer d-flex align-items-center justify-content-center gap-2">
-              @for (t of getPokemonSummary(p.name).types; track t.slot) {
-                <span [ngClass]="'type-' + t.type.name" class="badge rounded-pill">{{ t.type.name }}</span>
-              }
+            <div class="card-body p-2 d-flex justify-content-center align-items-center">
+              <img class="card-img-pokemon" [src]="getPokemonSummary(p.name).img" [alt]="p.name" />
+            </div>
+            <div class="card-footer text-center">
+              <div class="d-flex align-items-center justify-content-center gap-1 flex-wrap">
+                @for (t of getPokemonSummary(p.name).types; track t.slot) {
+                  <span [ngClass]="'type-' + t.type.name" class="badge rounded-pill badge-sm">{{ t.type.name }}</span>
+                }
+              </div>
             </div>
           </div>
         </div>
       }
     </div>
         <!-- Pagination -->
-    <div class="d-flex align-items-center justify-content-center gap-3 my-4">
+    <div class="d-flex align-items-center justify-content-center gap-3 pagination-container">
       <button
         class="btn btn-sm btn-outline-primary"
         [disabled]="offset === 0"
         (click)="prevPage()">
-        Précédent
+        ‹ Previous
       </button>
 
-      <span>{{ offset + 1 }} - {{ offset + limit > total ? total : offset + limit }}</span>
-      <span class="text-muted"> / {{ total }}</span>
+      <div class="input-group input-group-sm" style="width: 200px;">
+        <span class="input-group-text">Page</span>
+        <input 
+          type="number" 
+          class="form-control text-center" 
+          [value]="getCurrentPage()"
+          [min]="1" 
+          [max]="getTotalPages()"
+          (keydown.enter)="goToPage($event)"
+          (blur)="goToPage($event)"
+          placeholder="Page">
+        <span class="input-group-text">/ {{ getTotalPages() }}</span>
+      </div>
 
       <button
         class="btn btn-sm btn-outline-primary"
         [disabled]="offset + limit >= total"
         (click)="nextPage()">
-        Suivant
+        Next ›
       </button>
+    </div>
+
+    <!-- Pagination info -->
+    <div class="text-center text-muted mt-2">
+      <small>{{ offset + 1 }} - {{ offset + limit > total ? total : offset + limit }} / {{ total }} Pokemon</small>
     </div>
 
   }

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { PokemonList } from 'pokemon';
 import { PokemonDetail } from 'pokemon';
+import { MoveDetail } from 'pokemon';
 
 export const routes: Routes = [
     { path: '', component: PokemonList},
@@ -8,6 +9,7 @@ export const routes: Routes = [
     { path: 'pokemons/:offset', component: PokemonList },
     { path: 'details/:name', component: PokemonDetail },
     { path: 'details/:name/:offset', component: PokemonDetail },
+    { path: 'move/:moveName', component: MoveDetail },
     { path: '**', redirectTo: 'pokemons' }
 ];
 
